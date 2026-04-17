@@ -1,0 +1,31 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Narbar.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+---
+
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fime Blog</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style></style>
+  </head>
+  <body>
+    <Navbar />
+    <slot name="hero" />
+    <main class="section-container">
+      <div class="grid-container">
+        <slot />
+      </div>
+    </main>
+  </body>
+  <Footer />
+</html>

@@ -1,27 +1,35 @@
 ---
 import '@styles/post-container.css';
 
+import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 
 import BaseLayout from '@layouts/BaseLayout.astro';
 import PostCard from '@components/PostCard.astro';
 import Hero from '@components/Hero.astro';
+import Pagination from '@components/Pagination.astro';
 
 import { Formatter } from '@utils/formatter';
 
-const blogContent = await getCollection('blog');
+export const getStaticPaths = (async ({ paginate }) => {
+  const blogPost = await getCollection('blog');
+  return paginate(blogPost, { pageSize: 12 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+console.log(page.total);
 ---
 
 <BaseLayout>
   <Hero
-    tagline="Bienvenido al mundo de las ideas"
-    title="Páginas en Blanco, Mentes Abiertas"
-    subtitle="Guías de escritura creativa y retos para el autor moderno."
+    tagline="Todo lo que necesitas saber para ser un gran escritor"
+    title="Teoria para escritores"
+    subtitle="Este es un compilado de teorias, notas, y documentacion de todo lo necesario para comenzar a escribir ficcion"
   />
   <div class="section-container">
     <div class="grid-container">
       {
-        blogContent.map((blogPost) => (
+        page.data.map((blogPost) => (
           <PostCard
             date={Formatter.formatDate(blogPost.data.date)}
             title={blogPost.data.title}
@@ -32,4 +40,5 @@ const blogContent = await getCollection('blog');
       }
     </div>
   </div>
+  <Pagination />
 </BaseLayout>

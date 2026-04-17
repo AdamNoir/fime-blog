@@ -1,0 +1,13 @@
+/* --- GRID DE TARJETAS --- */
+        .section-container {
+            background-color: var(--bg-light);
+            padding: 80px 5%;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }

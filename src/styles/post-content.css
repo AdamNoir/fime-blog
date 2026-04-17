@@ -1,0 +1,98 @@
+/* --- MAIN CONTENT LAYOUT --- */
+        .post-main-layout-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 50px;
+            padding: 0 5%;
+        }
+
+        /* --- TABLE OF CONTENTS (TOC) --- */
+        .post-sidebar-toc {
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+            background: #fff;
+            z-index: 10;
+        }
+
+        .post-sidebar-toc__toggle-btn {
+            display: none; /* Solo visible en móvil */
+            width: 100%;
+            padding: 12px;
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-weight: 700;
+            text-align: left;
+            cursor: pointer;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .post-sidebar-toc__title {
+            font-size: 0.85rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: var(--text-main);
+            display: block;
+        }
+
+        .post-sidebar-toc__list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .post-sidebar-toc__list-item { margin-bottom: 12px; padding-left: 20px; position: relative; }
+        .post-sidebar-toc__link { text-decoration: none; color: var(--text-muted); font-size: 0.95rem; font-weight: 500; transition: 0.2s; }
+        .post-sidebar-toc__link:hover { color: var(--primary-dark); }
+        
+        /* Estado activo */
+        .post-sidebar-toc__list-item--active { border-left: 2px solid var(--primary-dark); margin-left: -2px; }
+        .post-sidebar-toc__list-item--active .post-sidebar-toc__link { color: var(--primary-dark); font-weight: 700; }
+
+        /* --- POST BODY CONTENT --- */
+        .post-content-body-section {
+            font-size: 1.15rem;
+            color: #334155;
+            max-width: 750px;
+        }
+
+        .post-content-body-section__heading-two {
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 50px 0 20px;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .post-content-body-section__paragraph { margin-bottom: 25px; line-height: 1.8; }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .post-main-layout-container { grid-template-columns: 1fr; }
+            
+            .post-sidebar-toc {
+                position: relative;
+                top: 0;
+                margin-bottom: 40px;
+            }
+
+            .post-sidebar-toc__toggle-btn { display: flex; }
+            
+            .post-sidebar-toc__content-wrapper {
+                display: none; /* Colapsado por defecto */
+                padding: 20px;
+                border: 1px solid var(--border-color);
+                border-top: none;
+                border-radius: 0 0 8px 8px;
+            }
+
+            .post-sidebar-toc__content-wrapper.is-open { display: block; }
+            .post-sidebar-toc__title { display: none; }
+            .nav-links { display: none; }
+        }

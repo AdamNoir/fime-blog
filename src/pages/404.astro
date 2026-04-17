@@ -1,0 +1,23 @@
+---
+import '@styles/404.css';
+import BaseLayout from '@layouts/BaseLayout.astro';
+---
+
+<BaseLayout>
+  <div class="error-section-container">
+    <div class="error-content-wrapper">
+      <h1 class="error-content-wrapper__status-code">404</h1>
+      <h2 class="error-content-wrapper__title">Error en la arquitectura</h2>
+      <p class="error-content-wrapper__description">
+        Lo sentimos, parece que la página que estás buscando se ha movido o ya
+        no existe. No te preocupes, puedes volver al inicio o revisar nuestros
+        artículos.
+      </p>
+
+      <div class="error-content-wrapper__actions">
+        <a href="/" class="btn-home-primary">Volver al Inicio</a>
+        <a href="/blog/1" class="btn-home-secondary">Ir al Blog</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

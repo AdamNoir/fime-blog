@@ -1,0 +1,62 @@
+---
+import '@styles/post-content.css';
+
+import type { GetStaticPaths } from 'astro';
+import { getCollection, render } from 'astro:content';
+
+import BaseLayout from '@layouts/BaseLayout.astro';
+import PostHeader from '@components/PostHeader.astro';
+
+export const getStaticPaths = (async () => {
+  const blogPost = await getCollection('blog');
+  return blogPost.map((post) => {
+    return {
+      params: { slug: post.id },
+      props: { post: post },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+---
+
+<BaseLayout>
+  <PostHeader post={post} />
+  <div class="post-main-layout-container">
+    <aside class="post-sidebar-toc" id="toc-sidebar">
+      <button class="post-sidebar-toc__toggle-btn" onclick="toggleTOC()">
+        Tabla de Contenido <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="post-sidebar-toc__content-wrapper" id="toc-content">
+        <span class="post-sidebar-toc__title">Tabla de Contenido</span>
+        <ul class="post-sidebar-toc__list">
+          {
+            headings.map((h) => (
+              <li class="post-sidebar-toc__list-item post-sidebar-toc__list-item--active">
+                <a href="#intro" class="post-sidebar-toc__link">
+                  {h.slug}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </aside>
+
+    <article class="post-content-body-section">
+      <Content />
+    </article>
+  </div>
+
+  <!--script>
+    function toggleTOC() {
+      const content = document.getElementById('toc-content');
+      const icon = document.querySelector('.post-sidebar-toc__toggle-btn i');
+      content.classList.toggle('is-open');
+      icon.style.transform = content.classList.contains('is-open')
+        ? 'rotate(180deg)'
+        : 'rotate(0deg)';
+    }
+  </script-->
+</BaseLayout>

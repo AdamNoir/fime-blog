@@ -1,0 +1,19 @@
+---
+import '@styles/hero.css';
+
+interface Props {
+  tagline?: string;
+  title: string;
+  subtitle?: string;
+}
+
+const { tagline, title, subtitle = '' } = Astro.props;
+---
+
+<header class="hero">
+  <div class="hero-badge">{tagline}</div>
+  <h1 class="hero-title">{title}</h1>
+  <p class="hero-subtitle">
+    {subtitle}
+  </p>
+</header>

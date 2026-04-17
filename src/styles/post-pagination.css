@@ -1,0 +1,58 @@
+/* --- PAGINACIÓN (blog-pagination) --- */
+        .blog-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 60px;
+            gap: 8px;
+        }
+
+        .blog-pagination__item {
+            min-width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+            border: 1px solid transparent;
+        }
+
+        .blog-pagination__item:hover:not(.blog-pagination__item--active) {
+            background-color: #e2e8f0;
+        }
+
+        .blog-pagination__item--active {
+            background-color: var(--primary-dark);
+            color: var(--white);
+        }
+
+        .blog-pagination__arrow {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* --- FOOTER --- */
+        .post-footer-section {
+            padding: 60px 5% 40px;
+            background-color: var(--white);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .post-footer-section__social-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
+        .post-footer-section__social-icon { width: 40px; height: 40px; border: 1px solid #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); text-decoration: none; transition: all 0.3s ease; }
+        .post-footer-section__social-icon:hover { background-color: var(--primary-dark); color: var(--white); }
+        .post-footer-section__bottom-bar { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .blog-posts-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; }
+        }
+        @media (max-width: 768px) {
+            .blog-posts-grid { grid-template-columns: 1fr; }
+        }

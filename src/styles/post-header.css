@@ -1,0 +1,39 @@
+/* --- POST HEADER AREA --- */
+        .post-article-header {
+            text-align: center;
+            padding: 80px 20px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .post-article-header__category-badge {
+            background-color: #f0f2f5;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 25px;
+            color: var(--primary-dark);
+        }
+
+        .post-article-header__main-title {
+            font-size: clamp(2.5rem, 6vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 30px;
+        }
+
+        .post-article-header__meta-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+        }
+
+        .post-article-header__meta-item-label { display: block; font-size: 0.7rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700; }
+        .post-article-header__meta-item-value { margin: 5px 0 0; font-weight: 600; font-size: 0.95rem; }

@@ -1,0 +1,35 @@
+---
+import '@styles/post-header.css';
+
+import { Formatter } from '../utils/formatter';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+---
+
+<header class="post-article-header">
+  <h1 class="post-article-header__main-title">
+    {post.data.title}
+  </h1>
+
+  <div class="post-article-header__meta-container">
+    <div class="post-article-header__meta-item">
+      <span class="post-article-header__meta-item-label">Fecha</span>
+      <p class="post-article-header__meta-item-value">
+        {Formatter.formatDate(post.data.date)}
+      </p>
+    </div>
+    <div class="post-article-header__meta-item">
+      <span class="post-article-header__meta-item-label">Author</span>
+      <p class="post-article-header__meta-item-value">{post.data.author}</p>
+    </div>
+    <div class="post-article-header__meta-item">
+      <span class="post-article-header__meta-item-label">Tipo</span>
+      <p class="post-article-header__meta-item-value">{post.data.type}</p>
+    </div>
+  </div>
+</header>

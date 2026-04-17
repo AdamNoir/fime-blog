@@ -1,0 +1,19 @@
+---
+import '@styles/post-card.css';
+
+interface Props {
+  date: string;
+  title: string;
+  desc: string;
+  slug: string;
+}
+
+const { date, title, desc, slug } = Astro.props;
+---
+
+<article class="card">
+  <span class="card-category">{date}</span>
+  <h2 class="card-title">{title}</h2>
+  <p class="card-description">{desc}</p>
+  <a href={'/post/' + slug} class="card-btn">Leer mas</a>
+</article>
