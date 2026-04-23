@@ -1,8 +1,21 @@
 ---
 import '@styles/post-pagination.css';
+
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  prevUrl: string | undefined;
+  nextUrl: string | undefined;
+  baseUrl: string;
+}
+
+const { currentPage, totalPages, prevUrl, nextUrl, baseUrl } = Astro.props;
+
+// Genera array de páginas: [1, 2, 3, ...]
+const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 ---
 
-<nav class="blog-pagination">
+<!--nav class="blog-pagination">
   <a href="#" class="blog-pagination__item blog-pagination__arrow">
     <i class="fa-solid fa-chevron-left"></i>
   </a>
@@ -14,4 +27,43 @@ import '@styles/post-pagination.css';
   <a href="#" class="blog-pagination__item blog-pagination__arrow">
     <i class="fa-solid fa-chevron-right"></i>
   </a>
+</nav-->
+<nav class="blog-pagination">
+  <!-- Flecha izquierda -->
+  {
+    prevUrl ? (
+      <a href={prevUrl} class="blog-pagination__item blog-pagination__arrow">
+        <i class="fa-solid fa-chevron-left" />
+      </a>
+    ) : (
+      <span class="blog-pagination__item blog-pagination__arrow blog-pagination__arrow--disabled">
+        <i class="fa-solid fa-chevron-left" />
+      </span>
+    )
+  }
+
+  <!-- Números de página -->
+  {
+    pages.map((pageNum) => (
+      <a
+        href={pageNum === 1 ? `${baseUrl}/1` : `${baseUrl}/${pageNum}`}
+        class={`blog-pagination__item ${pageNum === currentPage ? 'blog-pagination__item--active' : ''}`}
+      >
+        {pageNum}
+      </a>
+    ))
+  }
+
+  <!-- Flecha derecha -->
+  {
+    nextUrl ? (
+      <a href={nextUrl} class="blog-pagination__item blog-pagination__arrow">
+        <i class="fa-solid fa-chevron-right" />
+      </a>
+    ) : (
+      <span class="blog-pagination__item blog-pagination__arrow blog-pagination__arrow--disabled">
+        <i class="fa-solid fa-chevron-right" />
+      </span>
+    )
+  }
 </nav>

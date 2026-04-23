@@ -47,6 +47,13 @@
             border-left: 2px solid var(--border-color);
         }
 
+        .post-sidebar-toc__link--active {
+  font-weight: 700 !important;
+  color: black !important; /* solo para probar */
+}
+
+
+
         .post-sidebar-toc__list-item { margin-bottom: 12px; padding-left: 20px; position: relative; }
         .post-sidebar-toc__link { text-decoration: none; color: var(--text-muted); font-size: 0.95rem; font-weight: 500; transition: 0.2s; }
         .post-sidebar-toc__link:hover { color: var(--primary-dark); }

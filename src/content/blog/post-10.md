@@ -1,9 +1,9 @@
 ---
-title: This is a post
+title: This is a post about the absurd of the life
 author: Ivan Gutierrez
 type: Teoria
 desc: Simple post hablando sobre notas de libros y otras pequeñas reflexiones sin importancia
-date: 2026-01-01
+date: 2026-09-01
 ---
 
 # Albert Camus: The Philosopher of the Absurd

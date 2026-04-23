@@ -12,12 +12,11 @@ import Pagination from '@components/Pagination.astro';
 import { Formatter } from '@utils/formatter';
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const blogPost = await getCollection('blog');
-  return paginate(blogPost, { pageSize: 12 });
+  const exercisePost = await getCollection('exercise');
+  return paginate(exercisePost, { pageSize: 6 });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
-console.log(page.total);
 ---
 
 <BaseLayout>
@@ -40,5 +39,11 @@ console.log(page.total);
       }
     </div>
   </div>
-  <Pagination />
+  <Pagination
+    currentPage={page.currentPage}
+    totalPages={page.lastPage}
+    prevUrl={page.url.prev}
+    nextUrl={page.url.next}
+    baseUrl="/blog"
+  />
 </BaseLayout>

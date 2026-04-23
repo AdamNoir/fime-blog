@@ -3,7 +3,7 @@ title: This is a post about the absurd of the life
 author: Ivan Gutierrez
 type: Teoria
 desc: Simple post hablando sobre notas de libros y otras pequeñas reflexiones sin importancia
-date: 2026-01-12
+date: 2026-08-11
 ---
 
 # Hola mundo

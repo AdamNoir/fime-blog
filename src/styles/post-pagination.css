@@ -32,9 +32,16 @@
         }
 
         .blog-pagination__arrow {
-            color: var(--text-muted);
-            font-size: 0.8rem;
+            /*color: var(--text-muted);*/
+            color: black;
+            font-size: 1rem;
         }
+
+        .blog-pagination__arrow--disabled {
+            opacity: 0.4;
+            pointer-events: none;
+            cursor: default;
+            }
 
         /* --- FOOTER --- */
         .post-footer-section {
@@ -43,6 +50,7 @@
             border-top: 1px solid var(--border-color);
         }
 
+        
         .post-footer-section__social-container { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; }
         .post-footer-section__social-icon { width: 40px; height: 40px; border: 1px solid #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--text-muted); text-decoration: none; transition: all 0.3s ease; }
         .post-footer-section__social-icon:hover { background-color: var(--primary-dark); color: var(--white); }

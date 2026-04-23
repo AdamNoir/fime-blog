@@ -32,10 +32,14 @@ const { Content, headings } = await render(post);
         <span class="post-sidebar-toc__title">Tabla de Contenido</span>
         <ul class="post-sidebar-toc__list">
           {
-            headings.map((h) => (
-              <li class="post-sidebar-toc__list-item post-sidebar-toc__list-item--active">
-                <a href="#intro" class="post-sidebar-toc__link">
-                  {h.slug}
+            headings.map((h, index) => (
+              <li class="post-sidebar-toc__list-item">
+                <a
+                  href={`#${h.slug}`}
+                  class={`post-sidebar-toc__link ${index === 0 ? 'post-sidebar-toc__link--active' : ''}`}
+                  data-toc-link
+                >
+                  {h.text}
                 </a>
               </li>
             ))
@@ -49,14 +53,31 @@ const { Content, headings } = await render(post);
     </article>
   </div>
 
-  <!--script>
-    function toggleTOC() {
-      const content = document.getElementById('toc-content');
-      const icon = document.querySelector('.post-sidebar-toc__toggle-btn i');
-      content.classList.toggle('is-open');
-      icon.style.transform = content.classList.contains('is-open')
-        ? 'rotate(180deg)'
-        : 'rotate(0deg)';
-    }
-  </script-->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Toggle TOC en mobile
+      window.toggleTOC = function () {
+        const content = document.getElementById('toc-content');
+        const icon = document.querySelector('.post-sidebar-toc__toggle-btn i');
+        content?.classList.toggle('is-open');
+        if (icon instanceof HTMLElement) {
+          icon.style.transform = content?.classList.contains('is-open')
+            ? 'rotate(180deg)'
+            : 'rotate(0deg)';
+        }
+      };
+
+      // Marcar enlace activo al hacer click
+      const tocLinks = document.querySelectorAll('[data-toc-link]');
+
+      tocLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+          tocLinks.forEach((l) =>
+            l.classList.remove('post-sidebar-toc__link--active'),
+          );
+          link.classList.add('post-sidebar-toc__link--active');
+        });
+      });
+    });
+  </script>
 </BaseLayout>

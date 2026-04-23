@@ -10,6 +10,9 @@ import Hero from '@components/Hero.astro';
 import { Formatter } from '@utils/formatter';
 
 const blogContent = await getCollection('blog');
+const recentPosts = blogContent
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 6);
 ---
 
 <BaseLayout>
@@ -21,7 +24,7 @@ const blogContent = await getCollection('blog');
   <div class="section-container">
     <div class="grid-container">
       {
-        blogContent.map((blogPost) => (
+        recentPosts.map((blogPost) => (
           <PostCard
             date={Formatter.formatDate(blogPost.data.date)}
             title={blogPost.data.title}
