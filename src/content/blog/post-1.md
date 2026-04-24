@@ -1,7 +1,7 @@
 ---
 title: This is a post
 author: Ivan Gutierrez
-type: Teoria
+type: Ejercicio
 desc: Simple post hablando sobre notas de libros y otras pequeñas reflexiones sin importancia
 date: 2026-01-01
 ---

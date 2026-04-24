@@ -11,25 +11,10 @@ interface Props {
 
 const { currentPage, totalPages, prevUrl, nextUrl, baseUrl } = Astro.props;
 
-// Genera array de páginas: [1, 2, 3, ...]
 const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 ---
 
-<!--nav class="blog-pagination">
-  <a href="#" class="blog-pagination__item blog-pagination__arrow">
-    <i class="fa-solid fa-chevron-left"></i>
-  </a>
-  <a href="#" class="blog-pagination__item blog-pagination__item--active">1</a>
-  <a href="#" class="blog-pagination__item">2</a>
-  <a href="#" class="blog-pagination__item">3</a>
-  <a href="#" class="blog-pagination__item">4</a>
-  <a href="#" class="blog-pagination__item">5</a>
-  <a href="#" class="blog-pagination__item blog-pagination__arrow">
-    <i class="fa-solid fa-chevron-right"></i>
-  </a>
-</nav-->
 <nav class="blog-pagination">
-  <!-- Flecha izquierda -->
   {
     prevUrl ? (
       <a href={prevUrl} class="blog-pagination__item blog-pagination__arrow">
@@ -42,7 +27,6 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
     )
   }
 
-  <!-- Números de página -->
   {
     pages.map((pageNum) => (
       <a
@@ -54,7 +38,6 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
     ))
   }
 
-  <!-- Flecha derecha -->
   {
     nextUrl ? (
       <a href={nextUrl} class="blog-pagination__item blog-pagination__arrow">

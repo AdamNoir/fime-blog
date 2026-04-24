@@ -12,7 +12,10 @@ import Pagination from '@components/Pagination.astro';
 import { Formatter } from '@utils/formatter';
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const exercisePost = await getCollection('exercise');
+  const blogPost = await getCollection('blog');
+  const exercisePost = blogPost.filter(
+    (post) => post.data.type === 'Ejercicio',
+  );
   return paginate(exercisePost, { pageSize: 6 });
 }) satisfies GetStaticPaths;
 
@@ -28,12 +31,12 @@ const { page } = Astro.props;
   <div class="section-container">
     <div class="grid-container">
       {
-        page.data.map((blogPost) => (
+        page.data.map((exercisePost) => (
           <PostCard
-            date={Formatter.formatDate(blogPost.data.date)}
-            title={blogPost.data.title}
-            desc={blogPost.data.desc}
-            slug={blogPost.id}
+            date={Formatter.formatDate(exercisePost.data.date)}
+            title={exercisePost.data.title}
+            desc={exercisePost.data.desc}
+            slug={exercisePost.id}
           />
         ))
       }
@@ -44,6 +47,6 @@ const { page } = Astro.props;
     totalPages={page.lastPage}
     prevUrl={page.url.prev}
     nextUrl={page.url.next}
-    baseUrl="/blog"
+    baseUrl="/exercises"
   />
 </BaseLayout>

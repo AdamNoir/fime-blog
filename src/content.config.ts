@@ -15,17 +15,8 @@ const blog = defineCollection({
     })
 });
 
-const exercise = defineCollection({
-    loader: glob({pattern: "*.md", base: "src/content/exercises"}),
-    schema: () => z.object({
-        title: z.string(),
-        author: z.string(),
-        desc: z.string(),
-        date: z.date(),
-        type: z.string()
-    })
-})
+
 
 export const collections = {
-    blog, exercise
+    blog
 }
