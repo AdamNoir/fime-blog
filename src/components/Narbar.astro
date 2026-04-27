@@ -5,6 +5,12 @@ import '@styles/navbar.css';
 <nav class="navbar">
   <div class="nav-logo">Imaginantes Fime</div>
 
+  <button class="menu-toggle" aria-label="Obrir menú">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+
   <ul class="nav-links">
     <li>
       <a href="/"><i class="fa-regular fa-file-lines"></i> Home</a>
@@ -15,3 +21,23 @@ import '@styles/navbar.css';
     </li>
   </ul>
 </nav>
+
+<script>
+  const setupMenu = () => {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+      });
+    }
+  };
+
+  // S'executa quan carrega la pàgina
+  setupMenu();
+
+  // Si uses Astro amb View Transitions, afegeix això:
+  document.addEventListener('astro:after-swap', setupMenu);
+</script>

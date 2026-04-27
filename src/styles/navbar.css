@@ -39,19 +39,75 @@
             gap: 20px;
         }
 
-        /*.btn-sign-in {
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
+    @media (max-width: 768px) {
+    .nav-links { display: none; } /* Ocultar links en móvil para usar menú hamburguesa si lo deseas */
+    .navbar { padding: 10px 20px; }
+}
 
-        .btn-get-started {
-            background-color: var(--primary-dark);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-        }*/
+
+/* Estils del botó hamburguesa */
+.menu-toggle {
+    display: none; /* Amagat per defecte a escriptori */
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 2px;
+    background-color: var(--primary-dark);
+    transition: all 0.3s ease;
+}
+
+/* Responsive: Mòbil */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex; /* Apareix el botó */
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 0; /* Controlat pel JS */
+        max-height: 0; /* Per a l'efecte de desplegament */
+        overflow: hidden;
+        transition: all 0.4s ease;
+        border-bottom: 1px solid var(--border-color);
+        opacity: 0;
+    }
+
+    /* Quan el menú està actiu */
+    .nav-links.active {
+        max-height: 300px; /* Alçada suficient per als links */
+        padding: 20px 0;
+        opacity: 1;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        padding: 15px 0;
+        justify-content: center;
+        width: 100%;
+        font-size: 1.1rem;
+    }
+
+    /* Animació a "X" quan està obert */
+    .menu-toggle.active .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.active .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}

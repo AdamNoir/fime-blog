@@ -44,3 +44,27 @@
             font-weight: 600;
             width: fit-content;
         }
+
+/* post-card.css */
+
+/* ... (mantén tu código actual arriba) ... */
+
+@media (max-width: 768px) {
+    .card {
+        padding: 30px 20px; /* Padding más ajustado en móvil */
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Sombra más sutil */
+    }
+
+    .card-title {
+        font-size: 1.3rem; /* Un poco más pequeña en móvil */
+        margin-bottom: 15px;
+    }
+
+    .card-description {
+        margin-bottom: 25px;
+        font-size: 0.95rem;
+    }
+
+   
+}
